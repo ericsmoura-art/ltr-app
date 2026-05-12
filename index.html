@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Linhas LTR</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0057c2">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="apple-mobile-web-app-title" content="Linhas LTR">
+
+<meta name="format-detection" content="telephone=no">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    -webkit-text-size-adjust:100%;
+    touch-action:manipulation;
+}
+
+body{
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b4da2 0%,
+            #0057c2 24%,
+            #f2f4f8 24%,
+            #f2f4f8 100%
+        );
+
+    min-height:100vh;
+
+    color:#1e293b;
+
+    overflow-x:hidden;
+
+    padding-bottom:
+        env(safe-area-inset-bottom);
+}
+
+/* TOPO */
+
+.topo{
+
+    position:relative;
+
+    padding:24px 18px 34px;
+
+    text-align:center;
+
+    color:white;
+
+    overflow:hidden;
+}
+
+.topo::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:340px;
+    height:340px;
+
+    background:#ffd200;
+
+    border-radius:50%;
+
+    left:-220px;
+    top:90px;
+}
+
+.topo::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:340px;
+    height:340px;
+
+    background:#ffd200;
+
+    border-radius:50%;
+
+    right:-220px;
+    top:90px;
+}
+
+/* CORREIOS */
+
+.logo-correios-texto{
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:
+        Arial Black,
+        Arial,
+        sans-serif;
+
+    font-size:78px;
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    color:#ffd200;
+
+    margin-bottom:6px;
+
+    text-shadow:
+        0 5px 14px rgba(0,0,0,0.35);
+}
+
+.topo h1{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:56px;
+
+    font-weight:800;
+
+    margin-top:2px;
+}
+
+.topo p{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:15px;
+
+    margin-top:8px;
+
+    color:rgba(255,255,255,0.94);
+}
+
+/* RELOGIO */
+
+.relogio-box{
+
+    position:relative;
+
+    z-index:3;
+
+    margin:24px auto 0;
+
+    background:#003f88;
+
+    width:95%;
+
+    max-width:700px;
+
+    border-radius:24px;
+
+    padding:18px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border:2px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.25);
+}
+
+.data-area,
+.hora-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    color:white;
+}
+
+.icone-box{
+
+    width:52px;
+    height:52px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#ffd200;
+
+    color:#003f88;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    flex-shrink:0;
+}
+
+.divisor{
+
+    width:2px;
+    height:54px;
+
+    background:#ffd200;
+}
+
+#dataAtual{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    text-transform:capitalize;
+}
+
+#horaAtual{
+
+    font-size:42px;
+
+    font-weight:800;
+}
+
+/* PROGRESSO */
+
+.progresso-container{
+
+    width:92%;
+
+    max-width:860px;
+
+    margin:24px auto 24px;
+
+    background:white;
+
+    padding:20px 22px 24px;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,0.10);
+
+    position:relative;
+
+    z-index:5;
+}
+
+#progresso{
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:900;
+
+    color:#111827;
+
+    margin-bottom:16px;
+}
+
+#progresso span{
+
+    color:#0057c2;
+}
+
+.barra{
+
+    width:100%;
+
+    height:34px;
+
+    background:#d8dde7;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    box-shadow:
+        inset 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.barra-interna{
+
+    height:100%;
+
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #18c92e,
+            #39df4e
+        );
+
+    border-radius:999px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-weight:800;
+
+    font-size:18px;
+
+    transition:0.3s ease;
+}
+
+/* LISTA */
+
+#lista{
+
+    width:92%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding-bottom:18px;
+}
+
+.card{
+
+    background:white;
+
+    margin-bottom:10px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:14px 16px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.08);
+
+    border-left:6px solid #0057c2;
+
+    transition:0.2s ease;
+
+    user-select:none;
+}
+
+.card:hover{
+
+    transform:translateY(-2px);
+}
+
+.info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+}
+
+.cidade{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#d40000;
+
+    transition:0.2s ease;
+}
+
+.horario{
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#0057c2;
+}
+
+.card.concluido .cidade{
+
+    text-decoration:line-through;
+
+    opacity:0.75;
+}
+
+/* CHECK */
+
+.check{
+
+    width:48px;
+    height:48px;
+
+    border-radius:12px;
+
+    border:4px solid #0057c2;
+
+    cursor:pointer;
+
+    transition:0.2s ease;
+
+    background:white;
+
+    flex-shrink:0;
+}
+
+.checked{
+
+    background:
+        linear-gradient(
+            180deg,
+            #2ee84c,
+            #14b32f
+        );
+
+    border-color:#14b32f;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.15);
+}
+
+.checked::after{
+
+    content:"✔";
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+    height:100%;
+
+    color:white;
+
+    font-size:30px;
+
+    font-weight:bold;
+}
+
+/* BOTAO */
+
+.botao-area{
+
+    width:92%;
+
+    max-width:900px;
+
+    margin:14px auto 26px;
+}
+
+button{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff1f1f,
+            #d70000
+        );
+
+    box-shadow:
+        0 8px 18px rgba(215,0,0,0.35);
+
+    transition:0.2s ease;
+
+    appearance:none;
+}
+
+button:hover{
+
+    filter:brightness(1.05);
+}
+
+button:active{
+
+    transform:scale(0.98);
+}
+
+/* RODAPE */
+
+.rodape{
+
+    background:#003f88;
+
+    color:white;
+
+    text-align:center;
+
+    padding:
+        22px 10px
+        calc(34px + env(safe-area-inset-bottom));
+
+    font-size:18px;
+
+    font-weight:700;
+
+    border-top:4px solid #ffd200;
+}
+
+.rodape span{
+
+    color:#ffd200;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+
+    .logo-correios-texto{
+        font-size:52px;
+    }
+
+    .topo h1{
+        font-size:42px;
+    }
+
+    .relogio-box{
+
+        flex-direction:column;
+
+        gap:16px;
+    }
+
+    .divisor{
+
+        width:80%;
+        height:2px;
+    }
+
+    #horaAtual{
+        font-size:34px;
+    }
+
+    .cidade{
+        font-size:18px;
+    }
+
+    .horario{
+        font-size:16px;
+    }
+
+    button{
+        font-size:18px;
+    }
+
+    #progresso{
+        font-size:22px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topo">
+
+    <div class="logo-correios-texto">
+        Correios
+    </div>
+
+    <h1>Linhas LTR</h1>
+
+    <p>
+        Controle de horários e acompanhamento das linhas
+    </p>
+
+    <div class="relogio-box">
+
+        <div class="data-area">
+
+            <div id="dataAtual"></div>
+
+        </div>
+
+        <div class="divisor"></div>
+
+        <div class="hora-area">
+
+            <div class="icone-box">
+                🕒
+            </div>
+
+            <div id="horaAtual"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="progresso-container">
+
+    <div id="progresso">
+        <span>0/0</span> concluídos (0%)
+    </div>
+
+    <div class="barra">
+
+        <div class="barra-interna" id="barra">
+            0%
+        </div>
+
+    </div>
+
+</div>
+
+<div id="lista"></div>
+
+<div class="botao-area">
+
+    <button onclick="resetar()">
+        🗑️ LIMPAR TUDO
+    </button>
+
+</div>
+
+<div class="rodape">
+
+    CDD Nova Iguaçu, Gturn3 - Entreposto
+    &nbsp;&nbsp; - &nbsp;&nbsp;
+    <span>by EricMoura</span>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    set,
+    onValue
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyBGZz9Gg1ae_DE-xz1iKw4SwlHm-yQZZuo",
+
+    authDomain: "linhas-ltr.firebaseapp.com",
+
+    databaseURL:
+    "https://linhas-ltr-default-rtdb.firebaseio.com",
+
+    projectId: "linhas-ltr",
+
+    storageBucket:
+    "linhas-ltr.firebasestorage.app",
+
+    messagingSenderId: "160051159513",
+
+    appId:
+    "1:160051159513:web:f4e823de16d0540bd9b9c8",
+
+    measurementId: "G-HDZFCV2TL8"
+};
+
+const app =
+    initializeApp(firebaseConfig);
+
+const db =
+    getDatabase(app);
+
+/* DADOS */
+
+const dados = [
+
+    {cidade:"Resende / Barra Mansa", horario:"04:10 - 04:30"},
+    {cidade:"Angra dos Reis", horario:"04:20 - 04:40"},
+    {cidade:"Petrópolis / Itaipava", horario:"04:40 - 05:00"},
+    {cidade:"Paraty", horario:"04:50 - 05:10"},
+    {cidade:"Volta Redonda", horario:"05:00 - 05:20"},
+    {cidade:"Vassouras / Miguel Pereira", horario:"05:00 - 05:20"},
+    {cidade:"Valença / Barra do Piraí", horario:"05:00 - 05:20"},
+    {cidade:"Três Rios", horario:"05:00 - 05:20"},
+    {cidade:"Sapucaia / Paraíba do Sul", horario:"05:10 - 05:30"},
+    {cidade:"Teresópolis", horario:"05:20 - 05:40"},
+    {cidade:"Magé", horario:"05:20 - 05:40"},
+    {cidade:"Mangaratiba", horario:"05:30 - 05:45"},
+    {cidade:"Itaguaí", horario:"05:30 - 05:50"}
+
+];
+
+const lista =
+    document.getElementById("lista");
+
+/* LISTA */
+
+dados.forEach((item, i) => {
+
+    const div =
+        document.createElement("div");
+
+    div.className = "card";
+
+    div.innerHTML = `
+
+        <div class="info">
+
+            <div class="cidade">
+                ${item.cidade}
+            </div>
+
+            <div class="horario">
+                ${item.horario}
+            </div>
+
+        </div>
+
+        <div class="check"></div>
+    `;
+
+    const check =
+        div.querySelector(".check");
+
+    check.addEventListener("click", () => {
+
+        const marcado =
+            !check.classList.contains("checked");
+
+        set(
+            ref(db, "linhas/" + i),
+            marcado
+        );
+    });
+
+    lista.appendChild(div);
+});
+
+/* TEMPO REAL */
+
+onValue(ref(db, "linhas"), snapshot => {
+
+    const valores =
+        snapshot.val() || {};
+
+    const checks =
+        document.querySelectorAll(".check");
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    let feitos = 0;
+
+    checks.forEach((check, i) => {
+
+        if(valores[i]){
+
+            check.classList.add("checked");
+
+            cards[i].classList.add("concluido");
+
+            feitos++;
+
+        } else {
+
+            check.classList.remove("checked");
+
+            cards[i].classList.remove("concluido");
+        }
+    });
+
+    atualizarProgresso(feitos);
+});
+
+/* PROGRESSO */
+
+function atualizarProgresso(feitos){
+
+    const total = dados.length;
+
+    const porcentagem =
+        Math.round((feitos / total) * 100);
+
+    document.getElementById("progresso").innerHTML =
+        `<span>${feitos}/${total}</span> concluídos (${porcentagem}%)`;
+
+    document.getElementById("barra").style.width =
+        porcentagem + "%";
+
+    document.getElementById("barra").innerText =
+        porcentagem + "%";
+}
+
+/* RESET */
+
+window.resetar = function(){
+
+    set(
+        ref(db, "linhas"),
+        null
+    );
+}
+
+/* RELOGIO */
+
+function atualizarRelogio(){
+
+    const agora = new Date();
+
+    const data =
+        agora.toLocaleDateString(
+            'pt-BR',
+            {
+                weekday:'long',
+                day:'2-digit',
+                month:'2-digit',
+                year:'numeric'
+            }
+        );
+
+    const hora =
+        agora.toLocaleTimeString(
+            'pt-BR',
+            {
+                hour:'2-digit',
+                minute:'2-digit',
+                second:'2-digit'
+            }
+        );
+
+    document.getElementById("dataAtual").innerText =
+        data;
+
+    document.getElementById("horaAtual").innerText =
+        hora;
+}
+
+setInterval(atualizarRelogio, 1000);
+
+atualizarRelogio();
+
+/* SERVICE WORKER */
+
+if(
+    'serviceWorker' in navigator &&
+    location.protocol !== 'file:'
+){
+
+    navigator.serviceWorker
+    .register('./sw.js')
+    .catch(err => {
+
+        console.log(err);
+    });
+}
+
+</script>
+
+</body>
+</html>
