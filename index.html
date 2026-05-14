@@ -15,12 +15,8 @@ content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0057c2">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <meta name="apple-mobile-web-app-title" content="Linhas LTR">
-
-<meta name="format-detection" content="telephone=no">
 
 <style>
 
@@ -41,7 +37,7 @@ body{
     font-family:
         -apple-system,
         BlinkMacSystemFont,
-        'Segoe UI',
+        "Segoe UI",
         Arial,
         sans-serif;
 
@@ -50,13 +46,13 @@ body{
             180deg,
             #0b4da2 0%,
             #0057c2 24%,
-            #f2f4f8 24%,
-            #f2f4f8 100%
+            #f3f5f9 24%,
+            #f3f5f9 100%
         );
 
     min-height:100vh;
 
-    color:#1e293b;
+    color:#1f2937;
 
     overflow-x:hidden;
 
@@ -70,7 +66,7 @@ body{
 
     position:relative;
 
-    padding:24px 18px 34px;
+    padding:26px 18px 34px;
 
     text-align:center;
 
@@ -115,7 +111,7 @@ body{
 
 /* CORREIOS */
 
-.logo-correios-texto{
+.logo-correios{
 
     position:relative;
 
@@ -130,14 +126,14 @@ body{
 
     font-weight:900;
 
-    letter-spacing:-3px;
-
     color:#ffd200;
 
-    margin-bottom:6px;
+    letter-spacing:-3px;
 
     text-shadow:
         0 5px 14px rgba(0,0,0,0.35);
+
+    margin-bottom:4px;
 }
 
 .topo h1{
@@ -149,8 +145,6 @@ body{
     font-size:56px;
 
     font-weight:800;
-
-    margin-top:2px;
 }
 
 .topo p{
@@ -159,11 +153,11 @@ body{
 
     z-index:2;
 
-    font-size:15px;
-
     margin-top:8px;
 
-    color:rgba(255,255,255,0.94);
+    font-size:15px;
+
+    color:rgba(255,255,255,0.95);
 }
 
 /* RELOGIO */
@@ -176,15 +170,15 @@ body{
 
     margin:24px auto 0;
 
-    background:#003f88;
-
     width:95%;
 
-    max-width:700px;
+    max-width:720px;
+
+    background:#003f88;
 
     border-radius:24px;
 
-    padding:18px 20px;
+    padding:18px 22px;
 
     display:flex;
 
@@ -195,7 +189,7 @@ body{
     border:2px solid rgba(255,255,255,0.15);
 
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.25);
+        0 10px 24px rgba(0,0,0,0.25);
 }
 
 .data-area,
@@ -212,10 +206,14 @@ body{
 
 .icone-box{
 
-    width:52px;
-    height:52px;
+    width:54px;
+    height:54px;
 
     border-radius:14px;
+
+    background:#ffd200;
+
+    color:#003f88;
 
     display:flex;
 
@@ -223,21 +221,15 @@ body{
 
     justify-content:center;
 
-    background:#ffd200;
-
-    color:#003f88;
-
     font-size:28px;
 
     font-weight:bold;
-
-    flex-shrink:0;
 }
 
 .divisor{
 
     width:2px;
-    height:54px;
+    height:56px;
 
     background:#ffd200;
 }
@@ -264,22 +256,18 @@ body{
 
     width:92%;
 
-    max-width:860px;
+    max-width:900px;
 
-    margin:24px auto 24px;
+    margin:24px auto;
 
     background:white;
 
-    padding:20px 22px 24px;
-
     border-radius:24px;
 
+    padding:22px;
+
     box-shadow:
-        0 8px 22px rgba(0,0,0,0.10);
-
-    position:relative;
-
-    z-index:5;
+        0 8px 20px rgba(0,0,0,0.10);
 }
 
 #progresso{
@@ -306,7 +294,7 @@ body{
 
     height:34px;
 
-    background:#d8dde7;
+    background:#d7dce4;
 
     border-radius:999px;
 
@@ -322,13 +310,6 @@ body{
 
     width:0%;
 
-    background:
-        linear-gradient(
-            90deg,
-            #18c92e,
-            #39df4e
-        );
-
     border-radius:999px;
 
     display:flex;
@@ -343,6 +324,13 @@ body{
 
     font-size:18px;
 
+    background:
+        linear-gradient(
+            90deg,
+            #18c92e,
+            #39df4e
+        );
+
     transition:0.3s ease;
 }
 
@@ -356,16 +344,18 @@ body{
 
     margin:auto;
 
-    padding-bottom:18px;
+    padding-bottom:20px;
 }
 
 .card{
 
     background:white;
 
+    border-radius:18px;
+
     margin-bottom:10px;
 
-    border-radius:18px;
+    padding:14px 16px;
 
     display:flex;
 
@@ -373,21 +363,57 @@ body{
 
     justify-content:space-between;
 
-    padding:14px 16px;
+    border-left:6px solid #0057c2;
 
     box-shadow:
         0 4px 12px rgba(0,0,0,0.08);
 
-    border-left:6px solid #0057c2;
-
-    transition:0.2s ease;
-
-    user-select:none;
+    transition:0.25s ease;
 }
 
 .card:hover{
 
     transform:translateY(-2px);
+}
+
+/* ESTADOS */
+
+.card.andamento{
+
+    background:#ffe66d;
+
+    border-left:6px solid #ffb700;
+}
+
+.card.atrasado{
+
+    background:#ffb3b3;
+
+    border-left:6px solid #d70000;
+
+    animation:pulsar 1.4s infinite;
+}
+
+.card.concluido{
+
+    background:#d8ffe1;
+
+    border-left:6px solid #14b32f;
+}
+
+@keyframes pulsar{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.01);
+    }
+
+    100%{
+        transform:scale(1);
+    }
 }
 
 .info{
@@ -405,7 +431,7 @@ body{
 
     font-weight:800;
 
-    color:#d40000;
+    color:#d70000;
 
     transition:0.2s ease;
 }
@@ -437,13 +463,13 @@ body{
 
     border:4px solid #0057c2;
 
-    cursor:pointer;
-
-    transition:0.2s ease;
-
     background:white;
 
+    cursor:pointer;
+
     flex-shrink:0;
+
+    transition:0.2s ease;
 }
 
 .checked{
@@ -465,14 +491,14 @@ body{
 
     content:"✔";
 
+    width:100%;
+    height:100%;
+
     display:flex;
 
     align-items:center;
 
     justify-content:center;
-
-    width:100%;
-    height:100%;
 
     color:white;
 
@@ -489,7 +515,7 @@ body{
 
     max-width:900px;
 
-    margin:14px auto 26px;
+    margin:14px auto 28px;
 }
 
 button{
@@ -510,6 +536,8 @@ button{
 
     cursor:pointer;
 
+    appearance:none;
+
     background:
         linear-gradient(
             180deg,
@@ -521,8 +549,6 @@ button{
         0 8px 18px rgba(215,0,0,0.35);
 
     transition:0.2s ease;
-
-    appearance:none;
 }
 
 button:hover{
@@ -565,8 +591,8 @@ button:active{
 
 @media(max-width:700px){
 
-    .logo-correios-texto{
-        font-size:52px;
+    .logo-correios{
+        font-size:54px;
     }
 
     .topo h1{
@@ -614,14 +640,14 @@ button:active{
 
 <div class="topo">
 
-    <div class="logo-correios-texto">
+    <div class="logo-correios">
         Correios
     </div>
 
     <h1>Linhas LTR</h1>
 
     <p>
-        Controle de horários e acompanhamento das linhas
+        Controle operacional das linhas
     </p>
 
     <div class="relogio-box">
@@ -716,7 +742,7 @@ const firebaseConfig = {
     appId:
     "1:160051159513:web:f4e823de16d0540bd9b9c8",
 
-    measurementId: "G-HDZFCV2TL8"
+    measurementId:"G-HDZFCV2TL8"
 };
 
 const app =
@@ -725,7 +751,7 @@ const app =
 const db =
     getDatabase(app);
 
-/* DADOS */
+/* LINHAS */
 
 const dados = [
 
@@ -748,7 +774,7 @@ const dados = [
 const lista =
     document.getElementById("lista");
 
-/* LISTA */
+/* MONTAR CARDS */
 
 dados.forEach((item, i) => {
 
@@ -791,6 +817,92 @@ dados.forEach((item, i) => {
     lista.appendChild(div);
 });
 
+/* VERIFICAR HORARIOS */
+
+function verificarHorarios(valores){
+
+    const agora = new Date();
+
+    const horaAtual =
+        agora.getHours() * 60 +
+        agora.getMinutes();
+
+    const horaDoDia =
+        agora.getHours();
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    /* FORA DO HORARIO OPERACIONAL */
+
+    if(horaDoDia >= 7){
+
+        cards.forEach(card => {
+
+            card.classList.remove(
+                "andamento",
+                "atrasado"
+            );
+        });
+
+        return;
+    }
+
+    dados.forEach((item, i) => {
+
+        const horarios =
+            item.horario.split("-");
+
+        const inicio =
+            horarios[0].trim();
+
+        const fim =
+            horarios[1].trim();
+
+        const [h1, m1] =
+            inicio.split(":").map(Number);
+
+        const [h2, m2] =
+            fim.split(":").map(Number);
+
+        const inicioMin =
+            h1 * 60 + m1;
+
+        const fimMin =
+            h2 * 60 + m2;
+
+        cards[i].classList.remove(
+            "andamento",
+            "atrasado"
+        );
+
+        /* SE JA CONCLUIDO */
+
+        if(valores[i]) return;
+
+        /* AMARELO */
+
+        if(
+            horaAtual >= inicioMin &&
+            horaAtual < fimMin
+        ){
+
+            cards[i].classList.add(
+                "andamento"
+            );
+        }
+
+        /* VERMELHO */
+
+        if(horaAtual >= fimMin){
+
+            cards[i].classList.add(
+                "atrasado"
+            );
+        }
+    });
+}
+
 /* TEMPO REAL */
 
 onValue(ref(db, "linhas"), snapshot => {
@@ -825,6 +937,8 @@ onValue(ref(db, "linhas"), snapshot => {
     });
 
     atualizarProgresso(feitos);
+
+    verificarHorarios(valores);
 });
 
 /* PROGRESSO */
@@ -837,7 +951,9 @@ function atualizarProgresso(feitos){
         Math.round((feitos / total) * 100);
 
     document.getElementById("progresso").innerHTML =
-        `<span>${feitos}/${total}</span> concluídos (${porcentagem}%)`;
+
+        `<span>${feitos}/${total}</span>
+        concluídos (${porcentagem}%)`;
 
     document.getElementById("barra").style.width =
         porcentagem + "%";
@@ -846,7 +962,7 @@ function atualizarProgresso(feitos){
         porcentagem + "%";
 }
 
-/* RESET */
+/* RESET MANUAL */
 
 window.resetar = function(){
 
@@ -856,30 +972,59 @@ window.resetar = function(){
     );
 }
 
+/* CONTROLE DE RESET AUTOMATICO */
+
+let ultimoReset = "";
+
 /* RELOGIO */
 
 function atualizarRelogio(){
 
     const agora = new Date();
 
+    const horaAtual =
+        agora.getHours();
+
+    const minutoAtual =
+        agora.getMinutes();
+
+    const dataHoje =
+        agora.toLocaleDateString("pt-BR");
+
+    /* RESET AUTOMATICO 07:00 */
+
+    if(
+        horaAtual === 7 &&
+        minutoAtual === 0 &&
+        ultimoReset !== dataHoje
+    ){
+
+        ultimoReset = dataHoje;
+
+        set(
+            ref(db, "linhas"),
+            null
+        );
+    }
+
     const data =
         agora.toLocaleDateString(
-            'pt-BR',
+            "pt-BR",
             {
-                weekday:'long',
-                day:'2-digit',
-                month:'2-digit',
-                year:'numeric'
+                weekday:"long",
+                day:"2-digit",
+                month:"2-digit",
+                year:"numeric"
             }
         );
 
     const hora =
         agora.toLocaleTimeString(
-            'pt-BR',
+            "pt-BR",
             {
-                hour:'2-digit',
-                minute:'2-digit',
-                second:'2-digit'
+                hour:"2-digit",
+                minute:"2-digit",
+                second:"2-digit"
             }
         );
 
@@ -897,12 +1042,12 @@ atualizarRelogio();
 /* SERVICE WORKER */
 
 if(
-    'serviceWorker' in navigator &&
-    location.protocol !== 'file:'
+    "serviceWorker" in navigator &&
+    location.protocol !== "file:"
 ){
 
     navigator.serviceWorker
-    .register('./sw.js')
+    .register("./sw.js")
     .catch(err => {
 
         console.log(err);
