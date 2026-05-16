@@ -109,7 +109,7 @@ body{
     top:90px;
 }
 
-/* CORREIOS */
+/* LOGO */
 
 .logo-correios{
 
@@ -717,7 +717,8 @@ import {
     getDatabase,
     ref,
     set,
-    onValue
+    onValue,
+    get
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
@@ -751,7 +752,7 @@ const app =
 const db =
     getDatabase(app);
 
-/* LINHAS */
+/* DADOS */
 
 const dados = [
 
@@ -774,7 +775,7 @@ const dados = [
 const lista =
     document.getElementById("lista");
 
-/* MONTAR CARDS */
+/* CRIAR LINHAS */
 
 dados.forEach((item, i) => {
 
@@ -803,14 +804,17 @@ dados.forEach((item, i) => {
     const check =
         div.querySelector(".check");
 
-    check.addEventListener("click", () => {
+    check.addEventListener("click", async () => {
 
-        const marcado =
-            !check.classList.contains("checked");
+        const snapshot =
+            await get(ref(db, "linhas/" + i));
+
+        const atual =
+            snapshot.val();
 
         set(
             ref(db, "linhas/" + i),
-            marcado
+            !atual
         );
     });
 
@@ -833,7 +837,7 @@ function verificarHorarios(valores){
     const cards =
         document.querySelectorAll(".card");
 
-    /* FORA DO HORARIO OPERACIONAL */
+    /* FORA DA OPERACAO */
 
     if(horaDoDia >= 7){
 
@@ -876,7 +880,7 @@ function verificarHorarios(valores){
             "atrasado"
         );
 
-        /* SE JA CONCLUIDO */
+        /* JA CONCLUIDO */
 
         if(valores[i]) return;
 
@@ -945,7 +949,8 @@ onValue(ref(db, "linhas"), snapshot => {
 
 function atualizarProgresso(feitos){
 
-    const total = dados.length;
+    const total =
+        dados.length;
 
     const porcentagem =
         Math.round((feitos / total) * 100);
@@ -972,7 +977,7 @@ window.resetar = function(){
     );
 }
 
-/* CONTROLE DE RESET AUTOMATICO */
+/* RESET AUTOMATICO */
 
 let ultimoReset = "";
 
@@ -991,7 +996,7 @@ function atualizarRelogio(){
     const dataHoje =
         agora.toLocaleDateString("pt-BR");
 
-    /* RESET AUTOMATICO 07:00 */
+    /* RESET 07:00 */
 
     if(
         horaAtual === 7 &&
@@ -1035,7 +1040,20 @@ function atualizarRelogio(){
         hora;
 }
 
-setInterval(atualizarRelogio, 1000);
+/* ATUALIZACAO CONTINUA */
+
+setInterval(async () => {
+
+    atualizarRelogio();
+
+    const snapshot =
+        await get(ref(db, "linhas"));
+
+    verificarHorarios(
+        snapshot.val() || {}
+    );
+
+}, 1000);
 
 atualizarRelogio();
 
